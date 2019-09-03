@@ -1,0 +1,282 @@
+/* reset.css */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body, html {
+  width: 100%;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+}
+
+.mmall-head {
+  height: 32px;
+  line-height: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 50px;
+  background: #f2f2f2;
+  overflow: hidden;
+}
+
+.mmall-body {
+  box-sizing: border-box;
+  padding: 35px 0 0;
+}
+
+/* 登出状态 */
+.user-log-info.login .login-link, .user-log-info.login .register-link {
+  display: none;
+}
+
+/* 登录状态 */
+.user-log-info.logout .user-name, .user-log-info.logout .logout-link{
+  display: none;
+}
+
+.mmall-search-wrap {
+  width: 623px;
+  height: 36px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 0, 0, 1);
+}
+
+.mmall-search, .mmall-search-btn {
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.mmall-search {
+  width: 490px;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.mmall-search::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, .3);
+}
+
+.mmall-search-btn {
+  width: 90px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 0, 0, 1);
+  font-size: 18px;
+  letter-spacing: 5px;
+}
+
+.mmall-category-wrap {
+  margin: 20px 0 0;
+}
+
+.mmall-category-head-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(255, 0, 0, 1);
+}
+
+.mmall-category-head-list-item {
+  text-align: center;
+  font-size: 15px;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  font-weight: 500;
+}
+
+.mmall-category-head-list-item > a{
+  color: #333;
+}
+
+.mmall-category-head-list-item:first-child {
+  background: rgba(255, 0, 0, 1);
+  padding: 5px 50px;
+}
+
+.mmall-category-head-list-item:first-child > a {
+  color: #fff;  
+}
+
+.mmall-category-body {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url(https://gw.alicdn.com/tfs/TB1w3AzeEz1gK0jSZLeXXb9kVXa-2500-600.jpg);
+  background-position: top center;
+}
+
+.mmall-category-side-list {
+  width: 160px;
+  background: rgba(255, 255, 255, .2);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-list-item {
+  text-align: center;
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+}
+
+.side-list-item:hover {
+  background: rgba(255, 255, 255, .5);
+}
+
+.mmall-category-side-list-content {
+  flex-grow: 1;
+  align-self: stretch;
+}
+.mmall-category-side-list-content > li {
+  display: none;
+  color: #fff;
+  font-size: 18px;
+}
+.mmall-category-side-list-content.women .women-item{
+  display: block;
+}
+.mmall-category-side-list-content.men .men-item{
+  display: block;
+}
+.mmall-category-side-list-content.shoes .shoes-item{
+  display: block;
+}
+
+
+.mmall-category-side-list-content.makeup .makeup-item{
+  display: block;
+}
+.mmall-category-side-list-content.digital .digital-item{
+  display: block;
+}
+.mmall-category-side-list-content.foodDrink .foodDrink-item{
+  display: block;
+}
+.mmall-category-side-list-content.furniture .furniture-item{
+  display: block;
+}
+.mmall-category-side-list-content.books .books-item{
+  display: block;
+}
+.mmall-category-side-list-content.sports .sports-item{
+  display: block;
+}
+.mmall-category-side-list-content.medicine .medicine-item{
+  display: block;
+}
+.mmall-category-side-list-content.infant .infant-item{
+  display: block;
+}
+.mmall-category-side-list-content.fruits .fruits-item{
+  display: block;
+}
+.mmall-category-side-list-content.snacks .snacks-item{
+  display: block;
+}
+.mmall-category-side-list-content.electricAppliance .electricAppliance-item{
+  display: block;
+}
+
+/* 左浮动 */
+.f-left {
+  float: left;
+}
+
+/* 右浮动 */
+.f-right {
+  float: right;
+}
+
+.width-1180 {
+  width: 1180px;
+  margin: 0 auto;
+}
+
+.with-cursor {
+  cursor: pointer;
+  user-select: none;
+}
+
+.mmall-text {
+  display: inline-block;
+  color: rgba(184, 184, 184, .8);
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.mmall-text:hover {
+  color: rgba(155, 155, 155, 1);
+}
+

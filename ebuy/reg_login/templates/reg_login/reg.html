@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册</title>
+<link rel="stylesheet" href="/static/css/reg.css">
+<script>
+function validatephonenum(str){
+        var re = /^1\d{10}$/
+        if (re.test(str)) {
+			document.getElementById("tishi").innerHTML="";
+			document.getElementById("reg-btn").disabled = false;
+        } else {
+			document.getElementById("tishi").innerHTML="格式错误";
+			document.getElementById("reg-btn").disabled = true;
+        }
+}
+
+function validatepwd() {
+              var pwd1 = document.getElementById("pwd1").value;
+              var pwd2 = document.getElementById("pwd2").value;
+		<!-- 对比两次输入的密码 -->
+              if(pwd1 == pwd2) {
+                  document.getElementById("tishi2").innerHTML="<font color='green'></font>";
+                  document.getElementById("reg-btn").disabled = false;
+              }
+              else {
+                document.getElementById("tishi2").innerHTML="密码不一致";
+                document.getElementById("reg-btn").disabled = true;
+              }
+          }
+</script>
+</head>
+<body>
+	<div id="page_header">
+		<div class="logo">
+			<div id="ebuy_pic"><img src="/static/img/logo.jpg"></div>
+			<div id="ebuy_notice"><p>为确保您账户的安全及正常使用，依《网络安全法》相关要求，6月1日起会员账户需绑定手机。如您还未绑定，请尽快完成，感谢您的理解及支持！</p></div>
+		</div>
+	</div>
+<div class="content">
+    <div class="login-newbg"></div>
+    <div class="reg">
+        <div class="header">
+            <h1>
+                <a href="{% url 'reg_login:login' %}">登录</a> <a href="{% url 'reg_login:reg' %}">注册</a>
+            </h1>
+        </div>
+		<div class="uploadfile">
+			<div id="usertouxiang">
+				<img id="userimage" src="/static/img/default_profile.jpg" /><!-- 给予一个初始默认图片，不然显示不太友好 -->
+			</div>
+			<div class="uplabel">
+				<center><button id="upfilebutton" onclick="F_Open_dialog()">上传头像</button></center>
+			</div>
+		</div>
+        <form enctype="multipart/form-data" action="{% url 'reg_login:handle_reg' %}" method="post">
+            <table>
+			<tbody>
+                <tr>
+                    <td class="td1">手机号</td>
+                    <td><input type="text" class="input1" id="phonenum" name="phone" required="true" onchange="validatephonenum(phonenum.value)"></td>
+                    <td class="warning"><span id="tishi"></span></td>
+                </tr>
+                <tr>
+                    <td class="td1">密码</td>
+                    <td><input type="password" class="input1" id="pwd1" name="password" minlength="8" maxlength="15" required="true"></td>
+                    <td></td>
+                </tr>
+				<tr>
+                    <td class="td1">确认密码</td>
+					<td><input type="password" class="input1" id="pwd2" name="password_confirm" maxlength="15" required="true" onkeyup="validatepwd()"></td>
+                    <td class="warning"><span id="tishi2"></span></td>
+                </tr>
+                <tr>
+                    <td class="td1">昵称</td>
+                    <td><input type="text" class="input1" name="nickname" required="true"></td>
+                    <td></td>
+                </tr>
+				<tr>
+                    <td class="td1" colspan="3" style="text-align:center;">密保问题</td>
+                </tr>
+				<tr>
+                    <td class="td1">父亲姓名</td>
+                    <td><input type="text" class="input1" name="father_name" required="true"></td>
+                    <td></td>
+                </tr>
+				<tr>
+                    <td class="td1">母亲姓名</td>
+                    <td><input type="text" class="input1" name="mother_name" required="true"></td>
+                    <td></td>
+                </tr>
+				<tr>
+					<td>
+						<input type="file" id="upfile" name="upload" style="display: none" accept="image/png, image/jpeg, image/gif, image/jpg"
+						 onchange="" />
+					</td>
+				</tr>
+                <tr>
+                    <td id="error1" height="30.4px" colspan="3">
+                        {% if flag %}
+                            {% if flag == 1 %}
+                                遇到意外错误，请重试!
+                            {% elif flag == 2 %}
+                                手机号已注册!
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+				</tbody>
+            </table>
+                <div class="btn-red">
+                    <input type="submit" value="注册" id="reg-btn">
+                </div>
+        </form>
+    </div>
+</div>
+</body>
+	<script>
+		function F_Open_dialog() { 
+			document.getElementById("upfile").click(); 
+		}
+		document.getElementById('upfile').onchange = function() {
+			var maxsize = 2 * 1024 * 1024; //设置文件大小2兆
+			var maxMsg = "上传的图片不能超过2兆";
+			var tipMsg = "您的浏览器不支持计算上传文件大小，请上传2兆以内的文件，建议使用谷歌浏览器";
+			var browserCfg = {};
+			var ua = window.navigator.userAgent;
+			if (ua.indexOf("Firefox") >= 1) {
+				browserCfg.firefox = true;
+			} else if (ua.indexOf("Chrome") >= 1) {
+				browserCfg.chrome = true;
+			}
+			try{
+				var obj_file = document.getElementById("upfile");
+				if (obj_file.value == "") {
+					alert("请先选择上传文件");
+					return;
+				}
+				var filesize = 0;
+				if (browserCfg.firefox || browserCfg.chrome) {
+					filesize = obj_file.files[0].size;
+				} else {
+					alert(tipMsg);
+					return;
+				}
+				if(filesize==-1){
+					alert(tipMsg);
+					return;
+				}else if(filesize>maxsize){
+					alert(maxMsg);
+					return;
+				}else{
+					var imgFile = this.files[0];
+					var fr = new FileReader();
+					fr.onload = function() {
+						document.getElementById('userimage').src = fr.result;
+					};
+					fr.readAsDataURL(imgFile);
+				}
+			}catch(e){
+				alert(e);
+			}
+		};
+	</script>
+</html>

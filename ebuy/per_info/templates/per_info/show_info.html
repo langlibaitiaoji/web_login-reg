@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人信息</title>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+
+.page_content {
+    height: 750px;
+    width: 700px;
+	margin:0 auto;
+}
+.page_content #myebuyinfo {
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    position: relative;
+}
+.info_header ul li {
+    height: 40px;
+    font-size: 30px;
+    text-align: center;
+}
+.info_header ul{
+	list-style: none;
+}
+.info_header {
+	border: 1px solid #000000;
+}
+#myebuyinfo .info_content>div {
+	min-height: 400px;
+    border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+    padding: 10px;
+    background-color: #fff;
+    zoom: 1;
+}
+	td{
+		padding-top:40px;
+		text-align: center;
+	}
+	.align_right{
+		text-align: right;
+	}
+	#profile{
+		border: 3px solid;
+		padding: 5px;
+		border-color: #b5aca1ba;
+	}
+	#upfilebutton {
+		font-size: 18px;
+		background-color: tomato;
+		color: white;
+		border-radius: 5px;
+		cursor:pointer;
+	}
+	    #reg_btn{
+			border-radius: 10px;
+			border-width: 2px;
+			width: 50%;
+			height: 50px;
+			background: #ff4401;
+			border-color: #dfdfdf;
+			text-align: center;
+			line-height: 50px;
+			color: #ffffff;
+            font-size: 18px;
+			font-weight:bold;
+        }
+        #reg_btn:hover{
+            cursor:pointer;
+        }
+	#user_nickname{
+		font-size:15px;
+		height:25px;
+	}
+</style>
+</head>
+
+<body>
+		<div class="header">
+			<div class="nav clearfix">
+				<ul class="ul_one">
+					<li style="margin-right:20px;position: initial;"><img src="/static/img/logo_new.jpg" style="width: 130px;height: 35px;"></li>
+					<li><a href="{% url 'per_info:info_main' %}" style="margin-right:20px;">首页</a></li>
+					<li>
+						<a style="margin-right:15px;">账户设置 ˇ</a>
+						<ul class="two" style="z-index: 99999;width:85px; position: absolute;left: -38px;top: 15px;">
+							<li style="margin-top:9px; border-top:solid;border-top-color:#90dae633;"><a href="{% url 'per_info:show_info' %}">个人资料</a></li>
+							<li style="border-bottom:solid;border-bottom-color:#90dae633;"><a href="{% url 'per_info:modify_pwd' %}" target="_blank">修改密码</a></li>
+						</ul>
+					</li>
+					<li><a>关于</a></li>
+					<li style="margin-left:200px;"><input type="text"><button>搜索</button></li>
+				</ul>
+			</div>
+
+</div>
+<div class="page_content">
+	<div id="myebuyinfo" class="grid1">
+		<div class="info_header">
+			<ul>
+				<li>基本信息</li>
+			</ul>
+		</div>
+		<div class="info_content">
+			<div>
+					<table width="500px">
+						<tr>
+						  <td>当前头像:</td>
+						  <td class="align_right">
+                              {% if user.user_pic == '' %}
+							  <img id="profile" width="100px" height="100px" src="/static/img/default_profile.jpg" />
+                              {% else %}
+                              <img id="profile" width="100px" height="100px" src="/static/profile/{{user.user_pic}}" />
+                              {% endif %}
+							</td>
+							<td>
+								<button id="upfilebutton" onclick="F_Open_dialog()">上传头像</button>
+							</td>
+						</tr>
+					</table>
+				<form enctype="multipart/form-data" action="{% url 'per_info:modify_info' %}" method="post">
+					<table width="420px">
+						<tr>
+						  <td>&nbsp;&nbsp;&nbsp;昵称:</td>
+						  <td class="align_right"><input id="user_nickname" type="text" name="user_nickname" value="{{user.user_nickname}}"></td>
+						  <td></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="file" id="upfile" name="upload" style="display: none;" accept="image/png, image/jpeg, image/gif, image/jpg" onchange="">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div class="btn_red">
+									<input type="submit" value="保存" id="reg_btn">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+		<style type="text/css">
+			body{
+				width:100%;
+				height:100%;
+			}
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.header {
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				background: #ff4401;
+			}
+			a ,a:visited, a:link{
+				text-decoration: none;
+				cursor: pointer;
+				color:white;
+			}
+			.nav {
+				width: 1000px;
+				margin: 0 auto;
+				font-size: 0;
+				color:white;
+			}
+			.nav>ul>li{
+				display:inline-block;
+				position: relative;
+				bottom: 8px;
+			}
+			.nav>ul>li>a {
+				font-size: 18px;
+				display: inline-block;
+				width: 100px;
+			}
+			.nav>ul>li>a:hover {
+				background-color: #942b06;
+			}
+			.local {
+				margin-left: 30px;
+			}
+			.adm {
+				margin-left: 25px;
+			}
+			.content img{
+				width:1519px;
+				height:1849px;
+			}
+			.clearfix{
+                *zoom:1;
+            }
+            .clearfix:after{
+                clear: both;
+            }
+			.two,.two>li{list-style: none;}
+			.two{display:none;font-size: 12px;}
+			.ul_one>li:hover .two{display: block;}{
+
+			}
+			.two li{height:20px;width:200%;padding: 10px 0;transition: .4s;color:black;background-color:white;    border-left: solid;
+				border-right: solid;
+				border-color: #90dae633;
+			}
+			.two li:hover{}
+			.two li a:hover{
+				color:#ff4401;
+
+			}
+			.two a{
+				color:black;
+			}
+		</style>
+	<script>
+		function F_Open_dialog() {
+			document.getElementById("upfile").click();
+		}
+		document.getElementById('upfile').onchange = function() {
+			var maxsize = 2 * 1024 * 1024; //设置文件大小2兆
+			var maxMsg = "上传的图片不能超过2兆";
+			var tipMsg = "您的浏览器不支持计算上传文件大小，请上传2兆以内的文件，建议使用谷歌浏览器";
+			var browserCfg = {};
+			var ua = window.navigator.userAgent;
+			if (ua.indexOf("Firefox") >= 1) {
+				browserCfg.firefox = true;
+			} else if (ua.indexOf("Chrome") >= 1) {
+				browserCfg.chrome = true;
+			}
+			try{
+				var obj_file = document.getElementById("upfile");
+				if (obj_file.value == "") {
+					alert("请先选择上传文件");
+					return;
+				}
+				var filesize = 0;
+				if (browserCfg.firefox || browserCfg.chrome) {
+					filesize = obj_file.files[0].size;
+				} else {
+					alert(tipMsg);
+					return;
+				}
+				if(filesize==-1){
+					alert(tipMsg);
+					return;
+				}else if(filesize>maxsize){
+					alert(maxMsg);
+					return;
+				}else{
+					var imgFile = this.files[0];
+					var fr = new FileReader();
+					fr.onload = function() {
+						document.getElementById('profile').src = fr.result;
+					};
+					fr.readAsDataURL(imgFile);
+				}
+			}catch(e){
+				alert(e);
+			}
+		};
+	</script>
+</html>

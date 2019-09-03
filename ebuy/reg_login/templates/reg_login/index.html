@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <link rel="stylesheet" href="/static/css/forLSK.css">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="mmall-head">
+  <p class="f-left user-log-info
+  {% if login %}
+	login
+  {% else %}
+	logout
+  {% endif %}
+  ">
+    <span class="welcome mmall-text">喵，欢迎来易购</span>
+    <a class="login-link mmall-text with-cursor" href="{% url 'reg_login:login' %}" target=>请登录</a>
+    <a class="register-link mmall-text with-cursor" href="{% url 'reg_login:reg' %}" target=>免费注册</a>
+    <a class="user-name mmall-text" href="{% url 'per_info:info_main' %}">{{user.user_phone}}</a>
+    <a class="logout-link mmall-text with-cursor" href="{% url 'reg_login:logout' %}">退出</a>
+  </p>
+  <p class="f-right">
+    <a class="welcome mmall-text with-cursor" href="{% url 'per_info:info_main' %}" target="_blank">我的易购</a>
+    <a class="welcome mmall-text with-cursor" href="#" target="_blank">购物车</a>
+    <span class="welcome mmall-text with-cursor" href="#" target="_blank">收藏夹</span>
+  </p>
+</div>
+<div class="mmall-body width-1180">
+  <!-- 搜索框 -->
+  <div class="mmall-search-wrap">
+    <input type="text" class="mmall-search" placeholder="搜索 易购 商品/品牌/店铺">
+    <button class="mmall-search-btn with-cursor">搜索</button>
+  </div>
+
+  <!-- 品类 -->
+  <div class="mmall-category-wrap">
+    <div class="mmall-category-head">
+      <ul class="mmall-category-head-list">
+        <li class="mmall-category-head-list-item">
+          <a href="./category.html">商品分类</a>
+        </li>
+        <li class="mmall-category-head-list-item">
+          <a href="./mmall.html">易购商城</a>
+        </li>
+        <li class="mmall-category-head-list-item">
+          <a href="./intern.html">易购国际</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mmall-category-body">
+      <div class="mmall-category-side-list">
+        <div class="side-list-item with-cursor" data-text="women">女装</div>
+        <div class="side-list-item with-cursor" data-text="men">男装</div>
+        <div class="side-list-item with-cursor" data-text="shoes">女鞋/男鞋</div>
+        <div class="side-list-item with-cursor" data-text="makeup">美妆/个人护理</div>
+        <div class="side-list-item with-cursor" data-text="digital">数码3C</div>
+        <div class="side-list-item with-cursor" data-text="foodDrink">美食饮品</div>
+        <div class="side-list-item with-cursor" data-text="furniture">家具</div>
+        <div class="side-list-item with-cursor" data-text="books">图书</div>
+        <div class="side-list-item with-cursor" data-text="sports">运动户外</div>
+        <div class="side-list-item with-cursor" data-text="medicine">医药</div>
+        <div class="side-list-item with-cursor" data-text="infant">母婴</div>
+        <div class="side-list-item with-cursor" data-text="fruits">生鲜水果</div>
+        <div class="side-list-item with-cursor" data-text="snacks">零食</div>
+        <div class="side-list-item with-cursor" data-text="electricAppliance">家电</div>
+      </div>
+      <ul class="mmall-category-side-list-content women" id="categoryContent">
+        <li class="shoes-item">靴子</li>
+        <li class="women-item">女装</li>
+        <li class="men-item">男装</li>
+
+        <li class="makeup-item">美妆/个人护理</li>
+        <li class="digital-item">数码3C</li>
+        <li class="foodDrink-item">美食饮品</li>
+        <li class="furniture-item">家具</li>
+        <li class="books-item">图书</li>
+        <li class="sports-item">户外运动</li>
+        <li class="medicine-item">医药</li>
+        <li class="infant-item">母婴</li>
+        <li class="fruits-item">生鲜水果</li>
+        <li class="snacks-item">零食</li>
+        <li class="electricAppliance-item">家电</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mmall-footer"></div>
+
+<script>
+  $(document).ready(function () {
+    $('.side-list-item').on('mouseenter', function() {
+      const allListItem = $('.side-list-item');
+      const dataTextCls = $(this).data('text');
+
+      for(let i = 0, len = allListItem.length; i < len; i++) {
+        const curItem = $(allListItem[i]).data('text');
+        $('#categoryContent').removeClass(curItem);
+      }
+
+      $('#categoryContent').addClass(dataTextCls);
+    })
+  });
+</script>
+</body>
+</html>

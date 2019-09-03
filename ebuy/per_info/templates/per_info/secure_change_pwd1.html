@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>输入账号</title>
+		<style type="text/css">
+			body{
+				width:100%;
+				height:100%;
+			}
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.header {
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				background: #107bf8;
+			}
+			a ,a:visited, a:link{
+				text-decoration: none;
+				cursor: pointer;
+				color:white;
+			}
+			.nav {
+				width: 1100px;
+				margin: 0 auto;
+				font-size: 0;
+				color:white;
+			}
+			.nav>ul>li{
+				display:inline-block;
+				position: relative;
+				bottom: 8px;
+			}
+		</style>
+		<style>
+		.container {
+			width: 100%;
+			padding-bottom: 150px;
+		}
+		.container>div {
+			width: 100%;
+		}
+		.container .section-subnav {
+			height: 80px;
+			background-color: #f5f5f5;
+		}
+
+		.container .section {
+			width: 100%;
+		}
+		.container .section>div {
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.container .section_subnav .subnav_process {
+			padding-top: 14px;
+			text-align: center;
+			*margin-left: 60px;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.container .section_subnav .subnav_process>li {
+			position: relative;
+			display: inline-block;
+			*float: left;
+		}
+		li {
+			display: list-item;
+			text-align: -webkit-match-parent;
+		}
+		.container .section_subnav .subnav_process>li>div {
+			text-align: center;
+			position: relative;
+			float: left;
+			min-width: 56px;
+			height: 34px;
+			line-height: 30px;
+			vertical-align: middle;
+		}
+		.container .section_subnav .subnav_process .passed>div>i {
+			background-image: url(/static/img/common.png);
+			background-position: 0 -404px;
+			background-repeat: no-repeat;
+			background-color: none;
+		}
+		.container .section_subnav .subnav_process>li>div>i {
+			width: 28px;
+			height: 28px;
+			font-size: 14px;
+			line-height: 28px;
+			color: #fff;
+		}
+	i {
+		font-style: normal;
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+		background-repeat: no-repeat;
+	}
+	.container .section_subnav .subnav_process>li>div>p {
+		position: relative;
+		top: 12px;
+		font-size: 14px;
+		font-weight: 700;
+		line-height: 20px;
+		margin-top: -8px;
+		color: #a5a5a5;
+	}
+	p {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+	.container .section_subnav .subnav_process .passed>i {
+		background-image: url(/static/img/common.png);
+		background-position: 0 -392px;
+		background-repeat: no-repeat;
+		background-color: none;
+	}
+	.container .section_subnav .subnav_process>li>i {
+		float: left;
+		width: 220px;
+		height: 2px;
+		margin-top: 14px;
+		vertical-align: middle;
+		background-color: #ededed;
+	}
+	.container .section_subnav .subnav_process .active>i {
+		float: left;
+		width: 220px;
+		height: 2px;
+		margin-top: 14px;
+		vertical-align: middle;
+		background-color: #ededed;
+	}
+	.container .section_subnav .subnav_process>li>div>i {
+		width: 28px;
+		height: 28px;
+		font-size: 14px;
+		line-height: 28px;
+		color: #fff;
+		background-image: url(/static/img/common.png);
+		background-position: 0 -442px;
+		background-repeat: no-repeat;
+		background-color: none;
+	}
+	.container .section_subnav .subnav_process>li>i {
+		float: left;
+		width: 220px;
+		height: 2px;
+		margin-top: 14px;
+		vertical-align: middle;
+		background-color: #ededed;
+	}
+	.container .section_subnav .subnav_process .last {
+		margin-right: 0;
+	}
+	.container .section_subnav .subnav_process .last>i {
+		display: none;
+	}
+	</style>
+	<style>
+		#input_find_phone{
+			margin-top: 8px;
+			padding: 3px;
+			border-radius: 2px;
+			padding-left: 5px;
+			height: 28px;
+			font-size: 15px;
+			border: 0.7px solid;
+		}
+		#input_account_form{
+			width: 300px;
+			left: 40%;
+			position: absolute;
+			top: 50px;
+		}
+		.main_form{
+			position:relative;
+		}
+		.xxxx input{
+			position:relative;
+		}
+		.button-style{
+			position:absolute;
+			top:35px;
+			margin-top:80px;
+		}
+		#tipword_input_find_qq{
+			color:red;
+
+		}
+		.tips-error-text{
+			margin-top:9px;
+		}
+		#submit_info{
+			background-color:#107bf8;
+			width:70px;
+			height:40px;
+			border-color:#107bf8;
+			color:white;
+		}
+		#submit_info:hover{
+			cursor:pointer;
+		}
+
+	</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="nav">
+				<ul class="ul_one">
+					<li style="margin-right:5px;position: initial;"><img src="/static/img/secure_logo.png" style="width: 130px;height: 35px;"></li>
+					<li style="margin-right:400px;position: initial;"><img src="/static/img/secure_logo2.png" style="width: 120px;height: 30px;"></li>
+					<li style="margin-left:100;position: initial;"><img src="/static/img/secure_logo3.png" style="width: 210px;height: 28px;"></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="container">
+    		<div>
+                <div class="section section-subnav">
+                    <div class="section_subnav">
+                        <ul class="subnav_process">
+                            <li class="passed">
+                                <div>
+                                    <i>1</i>
+                                    <p>填写账号</p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li class="active">
+                                <div>
+                                    <i>2</i>
+                                    <p>身份验证</p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li>
+                                <div>
+                                    <i>3</i>
+                                    <p>设置新密码</p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li class="last">
+                                <div>
+                                    <i>4</i>
+                                    <p>完成</p>
+                                </div>
+                                <i></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+				<div class="section section-main">
+					<div class="section_main" id="container">
+						<div class="main_form">
+							<form enctype="multipart/form-data" action="{% url 'per_info:handle_page_one' %}" id="input_account_form" method="post">
+								<div class="mod-form-block input">
+									<label>帐号：</label>
+									<div class="xxxx">
+										<div class="formblock medium" style="width:264px">
+											<input type="text" style="width:264px" id="input_find_phone" name="phone" placeholder="手机号">
+										</div>
+										<div class="tips-error-text" style="display:block" id="tipdiv_input_find_qq">
+											<div>
+												{% if flag %}
+													{% if flag == 2 %}
+													<span id="tipword_input_find_qq">帐号有误，请重新输入</span>
+													{% elif flag == 0 %}
+													<span id="tipword_input_find_qq"></span>
+													{% else %}
+													<span id="tipword_input_find_qq">意外错误</span>
+													{% endif %}
+												{% endif %}
+											</div>
+										</div>
+										<div class="button-style">
+											<div class="confirm" style="width:264px">
+												<input id="submit_info" type="submit">
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+		        </div>
+			</div>
+    	</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

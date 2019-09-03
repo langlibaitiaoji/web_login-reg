@@ -1,0 +1,36 @@
+	*{
+        margin:0px;
+        padding:0px;
+    }
+		a{
+			text-decoration: none;
+		}
+		html{
+			width:100%;
+			height:100%;
+		}
+        body{
+			width:100%;
+			height:100%;
+            position:relative;
+            font-family: 微软雅黑;
+            background-color: lightblue;
+        }
+
+		.login{
+			text-align:center;
+			position:absolute;
+			width:500px;
+			height:150px;
+			top:30%;
+			left:50%;
+			margin-left:-250px;
+		}
+		span{
+			color:#7123a1;
+			font-size:40px;
+		}
+		a{
+			color:black;
+			font-size:20px;
+		}
